@@ -2,10 +2,10 @@ server:
   port: 8088
 spring:
   datasource:
-    url: jdbc:mysql://localhost:33061/hospital?useSSL=false
+    url: jdbc:mysql://139.196.6.43:3306/hospital?useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: root
+    password: ythyth
     type: com.alibaba.druid.pool.DruidDataSource
   freemarker:
     cache: false
