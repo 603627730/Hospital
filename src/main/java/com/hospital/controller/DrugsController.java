@@ -1,6 +1,7 @@
 package com.hospital.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.hospital.controller.front.common.R;
 import com.hospital.entity.Drugs;
 import com.hospital.service.DrugsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class DrugsController {
@@ -52,5 +54,13 @@ public class DrugsController {
         JSONObject json=new JSONObject();
         json.put("message",drugsService.updateDrug(drugs));
         return  json;
+    }
+
+    // 获取所有
+    @RequestMapping(value = "/drugs/list", method = RequestMethod.GET)
+    @ResponseBody
+    public R<List<Drugs>> getAllDrugs() {
+        List<Drugs> allDrugs = drugsService.getAllDrugs();
+        return R.success(allDrugs);
     }
 }

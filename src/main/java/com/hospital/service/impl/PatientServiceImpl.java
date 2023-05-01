@@ -1,5 +1,6 @@
 package com.hospital.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hospital.common.CommonService;
 import com.hospital.dao.*;
 import com.hospital.entity.Drugs;
@@ -16,7 +17,8 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class PatientServiceImpl implements PatientService {
+public class PatientServiceImpl extends ServiceImpl<PatientMapper,Patient> implements PatientService {
+
     @Autowired
     PatientMapper patientMapper;
     @Autowired

@@ -16,14 +16,19 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+//        log.info("开始进行静态资源映射...");
+        registry.addResourceHandler("/backend/**").addResourceLocations("classpath:/backend/");
+        registry.addResourceHandler("/front/**").addResourceLocations("classpath:/front/");
     }
 
     // 这个方法用来注册拦截器，我们自己写好的拦截器需要通过这里添加注册才能生效
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor).addPathPatterns("/**").excludePathPatterns("/hospital/login", "/hospital", "/regest", "/patient/search", "/hospital/introduction",
-                "/hospital/service", "/hospital/guide", "/hospital/news", "/login").excludePathPatterns("/static/**");//不拦截静态资源;
+                "/hospital/service", "/hospital/guide", "/hospital/news", "/login","/static/**", "/backend/**", "/front/**");//不拦截静态资源;
     }
+
+
 }
 
 

@@ -1,11 +1,12 @@
 package com.hospital.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.hospital.entity.Doctor;
 
 import java.util.List;
 import java.util.Map;
 
-public interface DoctorService {
+public interface DoctorService extends IService<Doctor> {
     List<Doctor> getAllDoctor();
     List<Doctor> getAllDoctor(String name,String certId);
     String delDoctor(Integer id);

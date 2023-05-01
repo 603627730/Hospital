@@ -1,12 +1,13 @@
 package com.hospital.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hospital.entity.Doctor;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-public interface DoctorMapper {
+public interface DoctorMapper extends BaseMapper<Doctor> {
     List<Doctor> getAll(@Param("name")String name,@Param("certId")String certId);
     int deleteByPrimaryKey(Integer id);
 

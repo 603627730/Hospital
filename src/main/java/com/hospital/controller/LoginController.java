@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Enumeration;
 
 @Controller
 public class LoginController {
@@ -89,6 +90,33 @@ public class LoginController {
     @RequestMapping("/hospital/admin/index")
     public String adminIndex(){
         return "/admin/index";
+    }
+
+    @RequestMapping(value = "/api/interm/user/login", method = RequestMethod.POST)
+    public String login() {
+        return "index";
+    }
+
+    //获取当前登陆用户
+    @RequestMapping(value = "/api/interm/user", method = RequestMethod.GET)
+    @ResponseBody
+    public JSONObject getUser(HttpSession session) {
+        JSONObject json = new JSONObject();
+        Enumeration<String> attributeNames = session.getAttributeNames();
+        // 遍历
+        while (attributeNames.hasMoreElements()) {
+            // 获取session键值
+            String name = attributeNames.nextElement().toString();
+            // 根据键值取session中的值
+            Object value = session.getAttribute(name);
+            // 打印结果
+            System.out.println("====" + name + ":" + value + "====");
+        }
+        System.out.println("-------");
+        Object user = session.getAttribute("user");
+
+
+        return json;
     }
 
 }

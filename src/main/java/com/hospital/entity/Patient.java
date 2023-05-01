@@ -1,5 +1,6 @@
 package com.hospital.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -28,8 +29,16 @@ public class Patient {
     private Integer appointmentid;
     private String certId;
     private Integer loginid;
+    @TableField(exist = false)
     private Integer isout;
+    @TableField(exist = false)
     private String doctorname;
+    @TableField(exist = false)
     private String username;
+    @TableField(exist = false)
     private String password;
+
+    private String phone;
+
+    private Integer status;
 }
