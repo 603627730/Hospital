@@ -126,26 +126,25 @@
                 clearInterval(this.timer)
                 this.isCounting = false
                 this.count = 60
-            }
-        },
-        async btnLogin() {
-            if (this.form.phone && this.form.code) {
-                this.loading = true
-                const res = await loginApi(this.form)
-                this.loading = false
-                if (res.code === 1) {
-                    sessionStorage.setItem("userPhone", res.id)
-                    window.requestAnimationFrame(() => {
-                        window.location.href = '/front/index.html'
-                    })
+            },
+            async btnLogin() {
+                if (this.form.phone && this.form.code) {
+                    this.loading = true
+                    const res = await loginApi(this.form)
+                    this.loading = false
+                    if (res.code === 1) {
+                        sessionStorage.setItem("userPhone", res.id)
+                        window.requestAnimationFrame(() => {
+                            window.location.href = '/front/index.html'
+                        })
+                    } else {
+                        this.$notify({type: 'warning', message: res.msg});
+                    }
                 } else {
-                    this.$notify({type: 'warning', message: res.msg});
+                    this.$notify({type: 'warning', message: '请输入手机号码'});
                 }
-            } else {
-                this.$notify({type: 'warning', message: '请输入手机号码'});
             }
         }
-
     })
 </script>
 </html>
