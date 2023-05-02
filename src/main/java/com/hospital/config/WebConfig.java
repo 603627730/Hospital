@@ -30,6 +30,7 @@ public class WebConfig implements WebMvcConfigurer {
                 "/category/list",
                 "/drugs/list",
                 "/doctor/list",
+                "/api/**",
                 "/shoppingCart/list"
 
         );//不拦截静态资源;

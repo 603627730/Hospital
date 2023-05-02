@@ -8,6 +8,7 @@ import com.hospital.service.CategoryService;
 import com.hospital.service.PatientService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -21,6 +22,8 @@ import java.util.Objects;
 public class UserController {
 
 
+    @Autowired
+    RedisTemplate<String,String > redisTemplate;
     /**
      * 发送手机短信验证码
      *
@@ -109,6 +112,7 @@ public class UserController {
                 if (Objects.isNull(patient)) {
                     return R.error("请先注册");
                 }
+                redisTemplate.opsForValue().set("user", patient.getId().toString());
                 session.setAttribute("user", patient.getId());
                 return R.success(patient);
             }
@@ -132,6 +136,7 @@ public class UserController {
             }
             // 根据手机号获取用户信息
             session.setAttribute("user", patient.getId());
+            redisTemplate.opsForValue().set("user", patient.getId().toString());
             return R.success(patient);
         }
         return R.error("登录失败");

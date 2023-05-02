@@ -1,10 +1,12 @@
 package com.hospital.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hospital.common.CommonService;
 import com.hospital.dao.DoctorMapper;
 import com.hospital.dao.MedicalhistoryMapper;
 import com.hospital.dao.PatientMapper;
 import com.hospital.entity.Medicalhistory;
+import com.hospital.entity.Patient;
 import com.hospital.service.MedicalhistoryService;
 import com.hospital.uitls.PatientDoctorutils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class MedicalhistoryServiceImpl implements MedicalhistoryService {
+public class MedicalhistoryServiceImpl extends ServiceImpl<MedicalhistoryMapper, Medicalhistory> implements MedicalhistoryService {
     @Autowired
     MedicalhistoryMapper medicalhistoryMapper;
     @Autowired

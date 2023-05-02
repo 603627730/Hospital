@@ -25,7 +25,7 @@ function setmealListApi(data) {
 
 function getSysmptom(data){
     return $axios({
-        'url': '/history/list',
+        'url': 'api/history/list',
         'method': 'get',
         params:{...data}
     })

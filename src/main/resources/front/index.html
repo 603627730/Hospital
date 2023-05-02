@@ -56,8 +56,8 @@
               <div>
                 <div class="divName">{{item.name}}</div>
                 <div class="divDesc">{{item.department}}</div>
-                <div class="divDesc">{{'年龄' + (item.age ? item.age : 0)  }}</div>
-                <div class="divBottom"><span>￥</span><span>{{item.expert/100}}</span></div>
+                <div class="divDesc" >{{'年龄' + (item.age ? item.age : 0)  }}</div>
+                <div class="divBottom" v-if="item.type === 1"><span>￥</span><span>{{item.expert/100}}</span></div>
                 <div class="divNum">
                   <div class="divSubtract" v-if="item.number > 0">
                     <img src="./images/subtract.png" @click.prevent.stop="subtractCart(item)"/>

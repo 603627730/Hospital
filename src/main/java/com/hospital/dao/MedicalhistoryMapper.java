@@ -1,12 +1,13 @@
 package com.hospital.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hospital.entity.Medicalhistory;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-public interface MedicalhistoryMapper {
+public interface MedicalhistoryMapper extends BaseMapper<Medicalhistory> {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Medicalhistory record);
