@@ -6,6 +6,14 @@ function loginApi(data) {
     })
 }
 
+function addhis(data){
+    return $axios({
+        'url': 'api/addhis',
+        'method': 'post',
+        data
+    })
+}
+
 function sendMsgApi(data) {
     return $axios({
         'url': '/user/sendMsg',

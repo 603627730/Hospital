@@ -47,6 +47,9 @@
         </div>
         <div class="divMenu">
           <div>
+            <input v-if="ishis" type="text" v-model="his">
+            <button @click="addhis">添加我的症状</button>
+
             <div class="divItem" v-for="(item,index) in dishList" :key="index" @click="dishDetails(item)">
               <el-image :src="item.image" >
                 <div slot="error" class="image-slot">
@@ -72,7 +75,9 @@
 
               </div>
             </div>
+
           </div>
+
         </div>
 
       </div>
@@ -229,12 +234,16 @@
         <script src="./js/request.js"></script>
         <script src="./js/common.js"></script>
         <script src="./api/main.js"></script>
+    <script src="./api/login.js"></script>
+
   </body>
   <script>
       new Vue({
           el:'#main',
           data(){
             return {
+              ishis : false,
+              his : '输入你的症状',
               //左边菜品类别index
               activeType:0,
               categoryList:[],
@@ -295,6 +304,12 @@
             this.initData()
           },
           methods:{
+            async addhis(){
+              console.log("----------")
+              const res = await addhis(this.his)
+              this.his = ''
+              this.$notify({ type:'info', message:'添加成功'});
+            },
             //初始化数据
             initData(){
               Promise.all([categoryListApi(),cartListApi({})]).then(res=>{
@@ -330,6 +345,7 @@
               }else if (type === 2){// 药品
                 this.getSetmealData()
               } else if (type === 3){// 症状
+                this.ishis = true
                 this.mySymptom()
               }
 
