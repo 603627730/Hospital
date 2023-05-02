@@ -10,7 +10,7 @@ public interface PatientMapper extends BaseMapper<Patient> {
     List<Patient> findAll(@Param("name")String name,@Param("certId")String certId);
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Patient record);
+    int insert1(Patient record);
 
     int insertSelective(Patient record);
 

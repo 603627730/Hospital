@@ -54,7 +54,7 @@ public class UserController {
     @Autowired
     CategoryService categoryService;
     /**
-     * 移动端用户登录
+     * 注册
      * @param map
      * @param session
      * @return

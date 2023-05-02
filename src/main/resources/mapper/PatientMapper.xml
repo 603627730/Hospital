@@ -46,7 +46,7 @@
     delete from patient
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hospital.entity.Patient">
+  <insert id="insert1" parameterType="com.hospital.entity.Patient">
     insert into patient (id, name, age, 
       sex, address,isout,certId
       )
